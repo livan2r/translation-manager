@@ -32,6 +32,11 @@ class LanguageLineResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
     protected static ?string $slug = 'translation-manager';
 
+    public static function isScopedToTenant(): bool
+    {
+        return config('translation-manager.scope_to_tenant', false);
+    }
+
     /**
      * @param  array<string, mixed>  $parameters
      */

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'translation-navigation-label' => 'Translation Manager',
+    'translation-navigation-label' => 'Translations',
     'translation-label' => 'Translation|Translations',
     'group' => 'Translation group',
     'key' => 'Translation key',

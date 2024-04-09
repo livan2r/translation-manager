@@ -103,6 +103,7 @@ return [
     */
 
     'dont_register_navigation_on_panel_ids' => [],
+    'scope_to_tenant' => false,
 
     /*
     |--------------------------------------------------------------------------

@@ -18,6 +18,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Kenepa\TranslationManager\Filters\NotTranslatedFilter;
 use Kenepa\TranslationManager\Pages\QuickTranslate;
 use Kenepa\TranslationManager\Resources\LanguageLineResource\Pages\EditLanguageLine;
@@ -185,9 +186,9 @@ class LanguageLineResource extends Resource
     public static function getNavigationGroup(): ?string
     {
         if (config('translation-manager.navigation_group_translation_key')) {
-            return __(config('translation-manager.navigation_group_translation_key'));
+            return Str::upper(__(config('translation-manager.navigation_group_translation_key')));
         }
 
-        return config('translation-manager.navigation_group');
+        return Str::upper(config('translation-manager.navigation_group'));
     }
 }

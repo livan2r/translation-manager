@@ -59,6 +59,7 @@ class LanguageLineResource extends Resource
 
     public static function form(Form $form): Form
     {
+        // TODO: add the suggest button to suggest a translation
         return $form
             ->schema([
                 TextInput::make('group')

@@ -22,4 +22,6 @@ return [
     'quick-translate-enter' => 'Introducir la traducción en ":lang":',
     'quick-translate-save-and-continue' => 'Guardar y continuar',
     'quick-translate-nothing' => 'No queda nada por traducir!',
+    'quick-translate-suggest-translation' => 'Traducir',
+    'quick-translate-issue' => 'Error de traducción.',
 ];

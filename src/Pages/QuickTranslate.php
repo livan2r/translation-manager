@@ -6,10 +6,12 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
 use Kenepa\TranslationManager\Resources\LanguageLineResource;
 use Kenepa\TranslationManager\Traits\CanRegisterPanelNavigation;
 use Spatie\TranslationLoader\LanguageLine;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class QuickTranslate extends Page implements HasForms
 {
@@ -94,6 +96,32 @@ class QuickTranslate extends Page implements HasForms
 
         // Go to the next item
         $this->next();
+    }
+
+    public function suggestTranslation(): void
+    {
+        try {
+            $languageLines = $this->record->text;
+            $keys = array_keys($languageLines);
+            if (count($keys) === 0) {
+                throw new \Exception("No translation source found");
+            }
+
+            $source = $keys[0];
+            $text = $languageLines[$source];
+            $target = $this->selectedLocale;
+
+            $translator = new GoogleTranslate();
+            $translator->setSource($source);
+            $translator->setTarget($target);
+
+            $this->enteredTranslation = $translator->translate($text);
+        } catch (\Exception $exception) {
+            Notification::make()
+                ->title(__('user.reset_password_notification_success'))
+                ->danger()
+                ->send();
+        }
     }
 
     /**

@@ -10,6 +10,12 @@ if (config('translation-manager.language_switcher')) {
     Route::group(['middleware' => ['web']], function () use ($availableCodes) {
         Route::get('select-language/{code}', function ($code) {
             request()->session()->put('language', $code);
+            if (request()->user()) {
+                request()->user()
+                    ->update([
+                        'locale' => $code
+                    ]);
+            }
 
             return redirect()->back();
         })->whereIn('code', $availableCodes)

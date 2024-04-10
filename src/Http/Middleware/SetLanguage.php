@@ -15,7 +15,11 @@ class SetLanguage
      */
     public function handle($request, Closure $next)
     {
-        $locale = config('app.locale') ?? config('app.fallback_locale', 'en');
+        if ($request->user()) {
+            $locale = $request->user()->locale;
+        } else {
+            $locale = config('app.locale') ?? config('app.fallback_locale', 'en');
+        }
 
         if (! $request->hasSession()) {
             $request->session()->put('language', $locale);

@@ -29,6 +29,7 @@ use Spatie\TranslationLoader\LanguageLine;
 class LanguageLineResource extends Resource
 {
     use CanRegisterPanelNavigation;
+
     protected static ?string $model = LanguageLine::class;
     protected static ?string $navigationIcon = 'heroicon-o-globe-alt';
     protected static ?string $slug = 'translation-manager';
@@ -161,12 +162,12 @@ class LanguageLineResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return static::shouldRegisterOnPanel() ? Gate::allows('use-translation-manager') : false;
+        return static::shouldRegisterOnPanel() && Gate::allows('use-translation-manager');
     }
 
     public static function canEdit(Model $record): bool
     {
-        return static::shouldRegisterOnPanel() ? Gate::allows('use-translation-manager') : false;
+        return static::shouldRegisterOnPanel() && Gate::allows('use-translation-manager');
     }
 
     public static function getNavigationLabel(): string

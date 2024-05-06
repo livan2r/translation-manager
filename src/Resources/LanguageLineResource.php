@@ -39,15 +39,6 @@ class LanguageLineResource extends Resource
         return config('translation-manager.scope_to_tenant', false);
     }
 
-    /**
-     * @param  array<string, mixed>  $parameters
-     */
-    public static function shouldRegisterNavigation(array $parameters = []): bool
-    {
-        //return self::canViewAny();
-        return false;
-    }
-
     public static function getLabel(): ?string
     {
         return trans_choice('translation-manager::translations.translation-label', 1);

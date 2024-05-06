@@ -44,7 +44,7 @@ class LanguageLineResource extends Resource
      */
     public static function shouldRegisterNavigation(array $parameters = []): bool
     {
-        return static::shouldRegisterOnPanel();
+        return self::canViewAny();
     }
 
     public static function getLabel(): ?string
@@ -162,12 +162,12 @@ class LanguageLineResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return static::shouldRegisterOnPanel() && Gate::allows('use-translation-manager');
+        return Gate::allows('use-translation-manager');
     }
 
     public static function canEdit(Model $record): bool
     {
-        return static::shouldRegisterOnPanel() && Gate::allows('use-translation-manager');
+        return Gate::allows('use-translation-manager');
     }
 
     public static function getNavigationLabel(): string

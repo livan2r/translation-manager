@@ -44,7 +44,8 @@ class LanguageLineResource extends Resource
      */
     public static function shouldRegisterNavigation(array $parameters = []): bool
     {
-        return self::canViewAny();
+        //return self::canViewAny();
+        return false;
     }
 
     public static function getLabel(): ?string

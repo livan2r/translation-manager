@@ -17,7 +17,6 @@ use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Kenepa\TranslationManager\Filters\NotTranslatedFilter;
 use Kenepa\TranslationManager\Pages\QuickTranslate;
@@ -151,16 +150,6 @@ class LanguageLineResource extends Resource
             'quick-translate' => QuickTranslate::route('/quick-translate'),
         ];
     }
-
-    /*public static function canViewAny(): bool
-    {
-        return Gate::allows('use-translation-manager');
-    }
-
-    public static function canEdit(Model $record): bool
-    {
-        return Gate::allows('use-translation-manager');
-    }*/
 
     public static function getNavigationLabel(): string
     {

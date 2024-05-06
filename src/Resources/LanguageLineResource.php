@@ -152,7 +152,7 @@ class LanguageLineResource extends Resource
         ];
     }
 
-    public static function canViewAny(): bool
+    /*public static function canViewAny(): bool
     {
         return Gate::allows('use-translation-manager');
     }
@@ -160,7 +160,7 @@ class LanguageLineResource extends Resource
     public static function canEdit(Model $record): bool
     {
         return Gate::allows('use-translation-manager');
-    }
+    }*/
 
     public static function getNavigationLabel(): string
     {

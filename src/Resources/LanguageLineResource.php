@@ -2,6 +2,7 @@
 
 namespace Kenepa\TranslationManager\Resources;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
